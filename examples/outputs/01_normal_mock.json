@@ -1,0 +1,75 @@
+{
+  "case_id": "01_normal",
+  "status": "completed",
+  "reason": "时长与品牌规则检查均通过",
+  "missing": null,
+  "title": "智能台灯｜抖音30秒短视频脚本",
+  "target_duration_sec": 30,
+  "estimated_total_sec": 25.1,
+  "segments": [
+    {
+      "shot": 1,
+      "visual": "主播出镜，手持智能台灯",
+      "narration": "大学生必备的智能台灯来啦。",
+      "subtitle": "大学生必备的智能台灯来啦。",
+      "material_ids": []
+    },
+    {
+      "shot": 2,
+      "visual": "展示智能台灯 Pro · 字幕支持",
+      "narration": "它支持字幕功能，用起来很省心。",
+      "subtitle": "它支持字幕功能，用起来很省心。",
+      "material_ids": [
+        "P01"
+      ]
+    },
+    {
+      "shot": 3,
+      "visual": "展示智能台灯 Pro · 续航",
+      "narration": "它续航时间 12 小时，用起来很省心。",
+      "subtitle": "它续航时间 12 小时，用起来很省心。",
+      "material_ids": [
+        "P02"
+      ]
+    },
+    {
+      "shot": 4,
+      "visual": "展示智能台灯 Pro · 连接与语音",
+      "narration": "它支持蓝牙 5.3，用起来很省心。",
+      "subtitle": "它支持蓝牙 5.3，用起来很省心。",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 5,
+      "visual": "展示智能台灯 Pro · 连接与语音",
+      "narration": "它支持语音控制开关灯，用起来很省心。",
+      "subtitle": "它支持语音控制开关灯，用起来很省心。",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 6,
+      "visual": "优惠信息 / 引导关注",
+      "narration": "喜欢就点击下方链接带回家吧。",
+      "subtitle": "喜欢就点击下方链接带回家吧。",
+      "material_ids": []
+    }
+  ],
+  "material_ids": [
+    "P01",
+    "P02",
+    "P03"
+  ],
+  "risks": [],
+  "run": {
+    "llm": "mock",
+    "steps": 6,
+    "tool_calls": 6,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "finish"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "case_id": "05_over_length_fail",
+  "topic": "智能台灯",
+  "audience": "大学生",
+  "platform": "抖音",
+  "target_duration_sec": 5,
+  "style": "硬核安利",
+  "notes": "用户把目标时长压到 5 秒，用于验证多次压缩仍超时长时的明确失败"
+}

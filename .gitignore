@@ -1,0 +1,10 @@
+# 依赖
+node_modules/
+
+# 环境变量（真实密钥绝不入库）
+.env
+.env.local
+
+# 运行产物 / 临时
+*.log
+tmp/

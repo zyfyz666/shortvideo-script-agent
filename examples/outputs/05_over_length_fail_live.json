@@ -1,0 +1,34 @@
+{
+  "case_id": "05_over_length_fail",
+  "status": "completed",
+  "reason": "脚本已压缩至单分镜、旁白18字，时长估算4.8秒≤目标5秒，规则检查通过（无违规）；所有产品事实（续航12小时、蓝牙5.3、语音控制开关灯）均来自素材P02/P03并在分镜material_ids中标注，无编造数据。",
+  "missing": null,
+  "title": "智能台灯·5秒硬核安利",
+  "target_duration_sec": 5,
+  "estimated_total_sec": 4.8,
+  "segments": [
+    {
+      "shot": 1,
+      "visual": "台灯特写，灯亮起，字幕弹出核心卖点",
+      "narration": "蓝牙5.3，语音控灯，续航12小时。",
+      "subtitle": "蓝牙5.3｜语音控灯｜续航12h",
+      "material_ids": [
+        "P02",
+        "P03"
+      ]
+    }
+  ],
+  "material_ids": [
+    "P02",
+    "P03"
+  ],
+  "risks": [],
+  "run": {
+    "llm": "live",
+    "steps": 6,
+    "tool_calls": 6,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "finish"
+  }
+}

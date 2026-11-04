@@ -1,0 +1,66 @@
+{
+  "case_id": "01_normal",
+  "status": "completed",
+  "reason": "脚本已完成：5 个分镜覆盖字幕功能(P01)、12 小时续航(P02)、蓝牙5.3与语音控制(P03)，所有产品事实均标注素材 ID；时长估算 28.9s 在 30s 目标内，规则检查通过，无违规。",
+  "missing": null,
+  "title": "宿舍党狂喜！这盏智能台灯有点东西",
+  "target_duration_sec": 30,
+  "estimated_total_sec": 28.9,
+  "segments": [
+    {
+      "shot": 1,
+      "visual": "宿舍书桌夜景，台灯亮起，镜头快速推近灯头",
+      "narration": "大学生熬夜赶due，这盏智能台灯真的救了我！",
+      "subtitle": "熬夜赶due救星✨",
+      "material_ids": []
+    },
+    {
+      "shot": 2,
+      "visual": "灯下演示字幕功能，画面出现字幕条",
+      "narration": "它支持字幕功能，网课、追剧、听播客，字幕直接看得清。",
+      "subtitle": "支持字幕功能",
+      "material_ids": [
+        "P01"
+      ]
+    },
+    {
+      "shot": 3,
+      "visual": "台灯持续亮着，画面叠加计时动画",
+      "narration": "续航时间12小时，从晚自习到熄灯都不用充电。",
+      "subtitle": "续航12小时",
+      "material_ids": [
+        "P02"
+      ]
+    },
+    {
+      "shot": 4,
+      "visual": "手机蓝牙连接界面，对着台灯说“开灯”",
+      "narration": "蓝牙5.3连接稳，还能语音控制开关灯，躺床上也能关。",
+      "subtitle": "蓝牙5.3 + 语音控制",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 5,
+      "visual": "台灯全景+宿舍桌面场景，结尾定格",
+      "narration": "宿舍党闭眼入，链接放评论区啦！",
+      "subtitle": "评论区见👇",
+      "material_ids": []
+    }
+  ],
+  "material_ids": [
+    "P01",
+    "P02",
+    "P03"
+  ],
+  "risks": [],
+  "run": {
+    "llm": "live",
+    "steps": 4,
+    "tool_calls": 4,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "finish"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "02_missing_info",
+  "status": "needs_input",
+  "reason": "请补充目标时长（秒），例如 30 秒或 60 秒，以便按抖音短视频时长硬约束生成脚本。",
+  "missing": [
+    "target_duration_sec"
+  ],
+  "title": null,
+  "target_duration_sec": null,
+  "estimated_total_sec": null,
+  "segments": [],
+  "material_ids": [],
+  "risks": [],
+  "run": {
+    "llm": "live",
+    "steps": 0,
+    "tool_calls": 0,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "request_info"
+  }
+}

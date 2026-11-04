@@ -1,0 +1,71 @@
+{
+  "case_id": "04_tool_failure",
+  "status": "completed",
+  "reason": "脚本已完成并通过校验：5 个分镜全部标注素材来源（P01/P02/P03/P06），无编造事实；estimate_duration 首次故障后重试成功，总时长 27.3 秒 ≤ 30 秒目标；check_rules 通过，无违规项。",
+  "missing": null,
+  "title": "宿舍党闭眼入的智能台灯｜30秒种草",
+  "target_duration_sec": 30,
+  "estimated_total_sec": 27.3,
+  "segments": [
+    {
+      "shot": 1,
+      "visual": "宿舍书桌特写，台灯亮起，镜头缓慢推近",
+      "narration": "宿舍党看过来，这盏智能台灯真的可以闭眼入。",
+      "subtitle": "宿舍党闭眼入的智能台灯",
+      "material_ids": [
+        "P06"
+      ]
+    },
+    {
+      "shot": 2,
+      "visual": "手部演示语音喊话，台灯应声开关",
+      "narration": "它支持蓝牙5.3，还能语音控制开关灯，躺床上喊一声就关灯。",
+      "subtitle": "蓝牙5.3｜语音控制开关灯",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 3,
+      "visual": "台灯旁屏幕显示字幕画面",
+      "narration": "还支持字幕功能，追剧、听网课都方便。",
+      "subtitle": "支持字幕功能",
+      "material_ids": [
+        "P01"
+      ]
+    },
+    {
+      "shot": 4,
+      "visual": "时间流逝快剪，台灯从白天亮到夜晚",
+      "narration": "续航时间12小时，从早自习用到晚自习都够。",
+      "subtitle": "续航12小时",
+      "material_ids": [
+        "P02"
+      ]
+    },
+    {
+      "shot": 5,
+      "visual": "台灯与宿舍好物摆在一起，画面定格",
+      "narration": "宿舍好物清单里，它必须有名字。",
+      "subtitle": "宿舍好物清单必备",
+      "material_ids": [
+        "P06"
+      ]
+    }
+  ],
+  "material_ids": [
+    "P06",
+    "P03",
+    "P01",
+    "P02"
+  ],
+  "risks": [],
+  "run": {
+    "llm": "live",
+    "steps": 4,
+    "tool_calls": 5,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "finish"
+  }
+}

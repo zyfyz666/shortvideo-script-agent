@@ -1,0 +1,19 @@
+{
+  "name": "shortvideo-script-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "短视频脚本 Agent：基于产品素材生成有事实依据、满足时长限制、可编辑的脚本，含 ReAct 决策循环。",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node src/cli.js run --input examples/inputs/01_normal.json --llm mock",
+    "gen": "node src/cli.js run --llm mock",
+    "examples": "node scripts/run-examples.js",
+    "test": "node --test",
+    "eval": "node scripts/run-examples.js --check"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

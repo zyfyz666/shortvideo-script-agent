@@ -1,0 +1,99 @@
+{
+  "case_id": "03_no_material",
+  "llm": "mock",
+  "input": {
+    "case_id": "03_no_material",
+    "topic": "量子计算在线课程",
+    "audience": "职场人",
+    "platform": "B站",
+    "target_duration_sec": 30,
+    "style": "科普"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "量子计算在线课程"
+      },
+      "rationale": "先检索与主题相关的产品素材，作为事实依据",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "量子计算在线课程",
+        "count": 0,
+        "materials": []
+      },
+      "observation_summary": "count=0"
+    },
+    {
+      "step": 2,
+      "action": "search_materials",
+      "args": {
+        "query": "量子计算在线课程 产品卖点"
+      },
+      "rationale": "第 1 次检索无结果，改写查询后重试",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "量子计算在线课程 产品卖点",
+        "count": 0,
+        "materials": []
+      },
+      "observation_summary": "count=0"
+    },
+    {
+      "step": 3,
+      "action": "search_materials",
+      "args": {
+        "query": "量子计算在线课程 功能 参数"
+      },
+      "rationale": "第 2 次检索无结果，改写查询后重试",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "量子计算在线课程 功能 参数",
+        "count": 0,
+        "materials": []
+      },
+      "observation_summary": "count=0"
+    },
+    {
+      "step": 4,
+      "action": "request_info",
+      "args": {
+        "missing": [
+          "materials"
+        ],
+        "question": "未检索到与主题相关的产品素材，请补充素材后重试。"
+      },
+      "rationale": "多次改写查询仍无素材，无法生成有事实依据的脚本，请求补充素材",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "03_no_material",
+    "status": "needs_input",
+    "reason": "未检索到与主题相关的产品素材，请补充素材后重试。",
+    "missing": [
+      "materials"
+    ],
+    "title": null,
+    "target_duration_sec": 30,
+    "estimated_total_sec": null,
+    "segments": [],
+    "material_ids": [],
+    "risks": [],
+    "run": {
+      "llm": "mock",
+      "steps": 3,
+      "tool_calls": 3,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "request_info"
+    }
+  }
+}

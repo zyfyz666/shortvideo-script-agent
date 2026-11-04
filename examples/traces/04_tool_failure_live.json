@@ -1,0 +1,309 @@
+{
+  "case_id": "04_tool_failure",
+  "llm": "live",
+  "input": {
+    "case_id": "04_tool_failure",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "target_duration_sec": 30,
+    "style": "轻松种草",
+    "notes": "注入 estimate_duration 首次调用失败，观察模型是否重试并恢复",
+    "inject_failures": {
+      "estimate_duration": 1
+    }
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "智能台灯 大学生 护眼 功能"
+      },
+      "rationale": "关键字段齐全，先检索智能台灯的产品素材，为脚本提供事实依据。",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "智能台灯 大学生 护眼 功能",
+        "count": 4,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "智能台灯 Pro · 字幕支持",
+            "facts": [
+              "支持字幕功能"
+            ],
+            "tags": [
+              "台灯",
+              "字幕",
+              "短视频",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P02",
+            "title": "智能台灯 Pro · 续航",
+            "facts": [
+              "续航时间 12 小时"
+            ],
+            "tags": [
+              "台灯",
+              "续航",
+              "电池",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P03",
+            "title": "智能台灯 Pro · 连接与语音",
+            "facts": [
+              "支持蓝牙 5.3",
+              "支持语音控制开关灯"
+            ],
+            "tags": [
+              "台灯",
+              "蓝牙",
+              "语音控制",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P06",
+            "title": "宿舍好物清单素材",
+            "facts": [
+              "清单包含台灯等宿舍常用好物"
+            ],
+            "tags": [
+              "宿舍好物",
+              "宿舍",
+              "好物",
+              "学生"
+            ]
+          }
+        ]
+      },
+      "observation_summary": "count=4 :: P01:支持字幕功能 | P02:续航时间 12 小时 | P03:支持蓝牙 5.3；支持语音控制开关灯 | P06:清单包含台灯等宿舍常用好物"
+    },
+    {
+      "step": 2,
+      "action": "write_script",
+      "args": {
+        "title": "宿舍党闭眼入的智能台灯｜30秒种草",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "宿舍书桌特写，台灯亮起，镜头缓慢推近",
+            "narration": "宿舍党看过来，这盏智能台灯真的可以闭眼入。",
+            "subtitle": "宿舍党闭眼入的智能台灯",
+            "material_ids": [
+              "P06"
+            ]
+          },
+          {
+            "shot": 2,
+            "visual": "手部演示语音喊话，台灯应声开关",
+            "narration": "它支持蓝牙5.3，还能语音控制开关灯，躺床上喊一声就关灯。",
+            "subtitle": "蓝牙5.3｜语音控制开关灯",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "台灯旁屏幕显示字幕画面",
+            "narration": "还支持字幕功能，追剧、听网课都方便。",
+            "subtitle": "支持字幕功能",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "时间流逝快剪，台灯从白天亮到夜晚",
+            "narration": "续航时间12小时，从早自习用到晚自习都够。",
+            "subtitle": "续航12小时",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "台灯与宿舍好物摆在一起，画面定格",
+            "narration": "宿舍好物清单里，它必须有名字。",
+            "subtitle": "宿舍好物清单必备",
+            "material_ids": [
+              "P06"
+            ]
+          }
+        ],
+        "notes": "轻松种草口播，语速偏快；所有卖点均来自素材 P01/P02/P03/P06，未添加任何效果数据。"
+      },
+      "rationale": "关键字段齐全且素材已检索到，先落地一版30秒脚本草稿，再进入时长估算与规则检查。",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 5,
+        "narration_chars": 104,
+        "material_ids": [
+          "P06",
+          "P03",
+          "P01",
+          "P02"
+        ]
+      },
+      "observation_summary": "segments=5, narration_chars=104, material_ids=[P06,P03,P01,P02]"
+    },
+    {
+      "step": 3,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "脚本草稿已写入，需先估算总时长以确认是否满足 30 秒硬约束。",
+      "observation": {
+        "ok": false,
+        "error": "工具 estimate_duration 临时故障（注入失败，剩余 0 次）",
+        "error_type": "tool_error"
+      },
+      "observation_summary": "ERROR tool_error: 工具 estimate_duration 临时故障（注入失败，剩余 0 次）"
+    },
+    {
+      "step": 4,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "上一次时长估算因工具临时故障失败，注入失败次数已用尽，重试以获取时长数据并验证 30 秒硬约束。",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 27.3,
+        "target_sec": 30,
+        "within_target": true,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 21,
+            "duration_sec": 5.5
+          },
+          {
+            "shot": 2,
+            "chars": 29,
+            "duration_sec": 7.4
+          },
+          {
+            "shot": 3,
+            "chars": 18,
+            "duration_sec": 4.8
+          },
+          {
+            "shot": 4,
+            "chars": 21,
+            "duration_sec": 5.5
+          },
+          {
+            "shot": 5,
+            "chars": 15,
+            "duration_sec": 4.1
+          }
+        ]
+      },
+      "observation_summary": "total_sec=27.3, target_sec=30, within_target=true"
+    },
+    {
+      "step": 5,
+      "action": "check_rules",
+      "args": {},
+      "rationale": "时长估算已通过（27.3s ≤ 30s），下一步对当前脚本做时长与品牌规则检查，确认无违规后再收尾。",
+      "observation": {
+        "ok": true,
+        "tool": "check_rules",
+        "passed": true,
+        "total_sec": 27.3,
+        "violations": []
+      },
+      "observation_summary": "passed=true, violations=0"
+    },
+    {
+      "step": 6,
+      "action": "finish",
+      "args": {
+        "status": "completed",
+        "reason": "脚本已完成并通过校验：5 个分镜全部标注素材来源（P01/P02/P03/P06），无编造事实；estimate_duration 首次故障后重试成功，总时长 27.3 秒 ≤ 30 秒目标；check_rules 通过，无违规项。"
+      },
+      "rationale": "素材检索、脚本撰写、时长估算与规则检查均已完成且通过，任务可正常结束。",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "04_tool_failure",
+    "status": "completed",
+    "reason": "脚本已完成并通过校验：5 个分镜全部标注素材来源（P01/P02/P03/P06），无编造事实；estimate_duration 首次故障后重试成功，总时长 27.3 秒 ≤ 30 秒目标；check_rules 通过，无违规项。",
+    "missing": null,
+    "title": "宿舍党闭眼入的智能台灯｜30秒种草",
+    "target_duration_sec": 30,
+    "estimated_total_sec": 27.3,
+    "segments": [
+      {
+        "shot": 1,
+        "visual": "宿舍书桌特写，台灯亮起，镜头缓慢推近",
+        "narration": "宿舍党看过来，这盏智能台灯真的可以闭眼入。",
+        "subtitle": "宿舍党闭眼入的智能台灯",
+        "material_ids": [
+          "P06"
+        ]
+      },
+      {
+        "shot": 2,
+        "visual": "手部演示语音喊话，台灯应声开关",
+        "narration": "它支持蓝牙5.3，还能语音控制开关灯，躺床上喊一声就关灯。",
+        "subtitle": "蓝牙5.3｜语音控制开关灯",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 3,
+        "visual": "台灯旁屏幕显示字幕画面",
+        "narration": "还支持字幕功能，追剧、听网课都方便。",
+        "subtitle": "支持字幕功能",
+        "material_ids": [
+          "P01"
+        ]
+      },
+      {
+        "shot": 4,
+        "visual": "时间流逝快剪，台灯从白天亮到夜晚",
+        "narration": "续航时间12小时，从早自习用到晚自习都够。",
+        "subtitle": "续航12小时",
+        "material_ids": [
+          "P02"
+        ]
+      },
+      {
+        "shot": 5,
+        "visual": "台灯与宿舍好物摆在一起，画面定格",
+        "narration": "宿舍好物清单里，它必须有名字。",
+        "subtitle": "宿舍好物清单必备",
+        "material_ids": [
+          "P06"
+        ]
+      }
+    ],
+    "material_ids": [
+      "P06",
+      "P03",
+      "P01",
+      "P02"
+    ],
+    "risks": [],
+    "run": {
+      "llm": "live",
+      "steps": 4,
+      "tool_calls": 5,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "finish"
+    }
+  }
+}

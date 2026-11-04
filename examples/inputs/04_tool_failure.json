@@ -1,0 +1,10 @@
+{
+  "case_id": "04_tool_failure",
+  "topic": "智能台灯",
+  "audience": "大学生",
+  "platform": "抖音",
+  "target_duration_sec": 30,
+  "style": "轻松种草",
+  "notes": "注入 estimate_duration 首次调用失败，观察模型是否重试并恢复",
+  "inject_failures": { "estimate_duration": 1 }
+}

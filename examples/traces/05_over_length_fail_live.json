@@ -1,0 +1,254 @@
+{
+  "case_id": "05_over_length_fail",
+  "llm": "live",
+  "input": {
+    "case_id": "05_over_length_fail",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "target_duration_sec": 5,
+    "style": "硬核安利",
+    "notes": "用户把目标时长压到 5 秒，用于验证多次压缩仍超时长时的明确失败"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "智能台灯 大学生 护眼 功能"
+      },
+      "rationale": "关键字段齐全，先检索智能台灯相关素材，为脚本提供事实依据。",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "智能台灯 大学生 护眼 功能",
+        "count": 4,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "智能台灯 Pro · 字幕支持",
+            "facts": [
+              "支持字幕功能"
+            ],
+            "tags": [
+              "台灯",
+              "字幕",
+              "短视频",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P02",
+            "title": "智能台灯 Pro · 续航",
+            "facts": [
+              "续航时间 12 小时"
+            ],
+            "tags": [
+              "台灯",
+              "续航",
+              "电池",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P03",
+            "title": "智能台灯 Pro · 连接与语音",
+            "facts": [
+              "支持蓝牙 5.3",
+              "支持语音控制开关灯"
+            ],
+            "tags": [
+              "台灯",
+              "蓝牙",
+              "语音控制",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P06",
+            "title": "宿舍好物清单素材",
+            "facts": [
+              "清单包含台灯等宿舍常用好物"
+            ],
+            "tags": [
+              "宿舍好物",
+              "宿舍",
+              "好物",
+              "学生"
+            ]
+          }
+        ]
+      },
+      "observation_summary": "count=4 :: P01:支持字幕功能 | P02:续航时间 12 小时 | P03:支持蓝牙 5.3；支持语音控制开关灯 | P06:清单包含台灯等宿舍常用好物"
+    },
+    {
+      "step": 2,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯·5秒硬核安利",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "台灯特写，灯亮起，字幕弹出核心卖点",
+            "narration": "智能台灯，蓝牙5.3，语音开关灯，续航12小时。",
+            "subtitle": "蓝牙5.3｜语音控灯｜续航12h",
+            "material_ids": [
+              "P02",
+              "P03"
+            ]
+          }
+        ],
+        "notes": "目标时长仅5秒，先写最小单分镜版本，随后做时长与规则检查。"
+      },
+      "rationale": "已有素材可用，先落地一个最小单分镜脚本，才能进行时长估算与规则检查。",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 1,
+        "narration_chars": 24,
+        "material_ids": [
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=1, narration_chars=24, material_ids=[P02,P03]"
+    },
+    {
+      "step": 3,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "脚本草稿已写入，先估算总时长判断是否满足 5 秒硬约束。",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 6.2,
+        "target_sec": 5,
+        "within_target": false,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 24,
+            "duration_sec": 6.2
+          }
+        ]
+      },
+      "observation_summary": "total_sec=6.2, target_sec=5, within_target=false"
+    },
+    {
+      "step": 4,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯·5秒硬核安利",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "台灯特写，灯亮起，字幕弹出核心卖点",
+            "narration": "蓝牙5.3，语音控灯，续航12小时。",
+            "subtitle": "蓝牙5.3｜语音控灯｜续航12h",
+            "material_ids": [
+              "P02",
+              "P03"
+            ]
+          }
+        ],
+        "notes": "压缩旁白字数以贴近5秒硬约束，保留P02/P03两条素材事实。"
+      },
+      "rationale": "当前6.2秒超出5秒目标，先精简旁白文案再重新估算时长。",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 1,
+        "narration_chars": 18,
+        "material_ids": [
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=1, narration_chars=18, material_ids=[P02,P03]"
+    },
+    {
+      "step": 5,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "已把旁白从24字压到18字，需重新估算当前脚本时长，确认是否已满足5秒硬约束。",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 4.8,
+        "target_sec": 5,
+        "within_target": true,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 18,
+            "duration_sec": 4.8
+          }
+        ]
+      },
+      "observation_summary": "total_sec=4.8, target_sec=5, within_target=true"
+    },
+    {
+      "step": 6,
+      "action": "check_rules",
+      "args": {},
+      "rationale": "时长估算已通过（4.8s ≤ 5s），下一步对当前脚本做时长与品牌规则检查以确认可交付。",
+      "observation": {
+        "ok": true,
+        "tool": "check_rules",
+        "passed": true,
+        "total_sec": 4.8,
+        "violations": []
+      },
+      "observation_summary": "passed=true, violations=0"
+    },
+    {
+      "step": 7,
+      "action": "finish",
+      "args": {
+        "status": "completed",
+        "reason": "脚本已压缩至单分镜、旁白18字，时长估算4.8秒≤目标5秒，规则检查通过（无违规）；所有产品事实（续航12小时、蓝牙5.3、语音控制开关灯）均来自素材P02/P03并在分镜material_ids中标注，无编造数据。"
+      },
+      "rationale": "时长与规则检查均已通过，事实来源可追溯，任务达成，故结束任务。",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "05_over_length_fail",
+    "status": "completed",
+    "reason": "脚本已压缩至单分镜、旁白18字，时长估算4.8秒≤目标5秒，规则检查通过（无违规）；所有产品事实（续航12小时、蓝牙5.3、语音控制开关灯）均来自素材P02/P03并在分镜material_ids中标注，无编造数据。",
+    "missing": null,
+    "title": "智能台灯·5秒硬核安利",
+    "target_duration_sec": 5,
+    "estimated_total_sec": 4.8,
+    "segments": [
+      {
+        "shot": 1,
+        "visual": "台灯特写，灯亮起，字幕弹出核心卖点",
+        "narration": "蓝牙5.3，语音控灯，续航12小时。",
+        "subtitle": "蓝牙5.3｜语音控灯｜续航12h",
+        "material_ids": [
+          "P02",
+          "P03"
+        ]
+      }
+    ],
+    "material_ids": [
+      "P02",
+      "P03"
+    ],
+    "risks": [],
+    "run": {
+      "llm": "live",
+      "steps": 6,
+      "tool_calls": 6,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "finish"
+    }
+  }
+}

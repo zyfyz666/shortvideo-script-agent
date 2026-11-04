@@ -1,0 +1,68 @@
+{
+  "case_id": "05_over_length_fail",
+  "status": "failed",
+  "reason": "已修正 2 次，预计时长仍超过目标，当前素材无法在目标时长内完成",
+  "missing": null,
+  "title": "智能台灯｜抖音5秒短视频脚本",
+  "target_duration_sec": 5,
+  "estimated_total_sec": 12.3,
+  "segments": [
+    {
+      "shot": 1,
+      "visual": "展示智能台灯 Pro · 字幕支持",
+      "narration": "支持字幕功能。",
+      "subtitle": "支持字幕功能。",
+      "material_ids": [
+        "P01"
+      ]
+    },
+    {
+      "shot": 2,
+      "visual": "展示智能台灯 Pro · 续航",
+      "narration": "续航时间 12 小时。",
+      "subtitle": "续航时间 12 小时。",
+      "material_ids": [
+        "P02"
+      ]
+    },
+    {
+      "shot": 3,
+      "visual": "展示智能台灯 Pro · 连接与语音",
+      "narration": "支持蓝牙 5.3。",
+      "subtitle": "支持蓝牙 5.3。",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 4,
+      "visual": "展示智能台灯 Pro · 连接与语音",
+      "narration": "支持语音控制开关灯。",
+      "subtitle": "支持语音控制开关灯。",
+      "material_ids": [
+        "P03"
+      ]
+    },
+    {
+      "shot": 5,
+      "visual": "优惠信息 / 引导关注",
+      "narration": "点击下方链接。",
+      "subtitle": "点击下方链接。",
+      "material_ids": []
+    }
+  ],
+  "material_ids": [
+    "P01",
+    "P02",
+    "P03"
+  ],
+  "risks": [],
+  "run": {
+    "llm": "mock",
+    "steps": 7,
+    "tool_calls": 7,
+    "max_steps": 16,
+    "max_tool_calls": 16,
+    "finished_action": "finish"
+  }
+}

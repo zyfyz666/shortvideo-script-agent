@@ -1,0 +1,50 @@
+{
+  "case_id": "02_missing_info",
+  "llm": "live",
+  "input": {
+    "case_id": "02_missing_info",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "style": "轻松种草"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "request_info",
+      "args": {
+        "missing": [
+          "target_duration_sec"
+        ],
+        "question": "请补充目标时长（秒），例如 30 秒或 60 秒，以便按抖音短视频时长硬约束生成脚本。"
+      },
+      "rationale": "用户输入缺少关键字段 target_duration_sec，按规则第一步必须请求补充，不能凭空假设时长。",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "02_missing_info",
+    "status": "needs_input",
+    "reason": "请补充目标时长（秒），例如 30 秒或 60 秒，以便按抖音短视频时长硬约束生成脚本。",
+    "missing": [
+      "target_duration_sec"
+    ],
+    "title": null,
+    "target_duration_sec": null,
+    "estimated_total_sec": null,
+    "segments": [],
+    "material_ids": [],
+    "risks": [],
+    "run": {
+      "llm": "live",
+      "steps": 0,
+      "tool_calls": 0,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "request_info"
+    }
+  }
+}

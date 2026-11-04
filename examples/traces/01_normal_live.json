@@ -1,0 +1,271 @@
+{
+  "case_id": "01_normal",
+  "llm": "live",
+  "input": {
+    "case_id": "01_normal",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "target_duration_sec": 30,
+    "style": "轻松种草",
+    "notes": "突出字幕功能与续航，引用素材 ID"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "智能台灯 字幕功能 续航"
+      },
+      "rationale": "关键字段齐全，先检索智能台灯相关素材，为脚本提供事实依据。",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "智能台灯 字幕功能 续航",
+        "count": 3,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "智能台灯 Pro · 字幕支持",
+            "facts": [
+              "支持字幕功能"
+            ],
+            "tags": [
+              "台灯",
+              "字幕",
+              "短视频",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P02",
+            "title": "智能台灯 Pro · 续航",
+            "facts": [
+              "续航时间 12 小时"
+            ],
+            "tags": [
+              "台灯",
+              "续航",
+              "电池",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P03",
+            "title": "智能台灯 Pro · 连接与语音",
+            "facts": [
+              "支持蓝牙 5.3",
+              "支持语音控制开关灯"
+            ],
+            "tags": [
+              "台灯",
+              "蓝牙",
+              "语音控制",
+              "智能台灯"
+            ]
+          }
+        ]
+      },
+      "observation_summary": "count=3 :: P01:支持字幕功能 | P02:续航时间 12 小时 | P03:支持蓝牙 5.3；支持语音控制开关灯"
+    },
+    {
+      "step": 2,
+      "action": "write_script",
+      "args": {
+        "title": "宿舍党狂喜！这盏智能台灯有点东西",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "宿舍书桌夜景，台灯亮起，镜头快速推近灯头",
+            "narration": "大学生熬夜赶due，这盏智能台灯真的救了我！",
+            "subtitle": "熬夜赶due救星✨",
+            "material_ids": []
+          },
+          {
+            "shot": 2,
+            "visual": "灯下演示字幕功能，画面出现字幕条",
+            "narration": "它支持字幕功能，网课、追剧、听播客，字幕直接看得清。",
+            "subtitle": "支持字幕功能",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "台灯持续亮着，画面叠加计时动画",
+            "narration": "续航时间12小时，从晚自习到熄灯都不用充电。",
+            "subtitle": "续航12小时",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "手机蓝牙连接界面，对着台灯说“开灯”",
+            "narration": "蓝牙5.3连接稳，还能语音控制开关灯，躺床上也能关。",
+            "subtitle": "蓝牙5.3 + 语音控制",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "台灯全景+宿舍桌面场景，结尾定格",
+            "narration": "宿舍党闭眼入，链接放评论区啦！",
+            "subtitle": "评论区见👇",
+            "material_ids": []
+          }
+        ],
+        "notes": "轻松种草口播，重点突出字幕功能与12小时续航；所有产品事实均来自P01-P03素材。"
+      },
+      "rationale": "素材已检索到3条，先按30秒目标写出5个分镜的脚本草稿，再估算时长与规则检查。",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 5,
+        "narration_chars": 111,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=5, narration_chars=111, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 3,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "脚本草稿已写入，需先估算总时长是否满足 30 秒硬约束。",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 28.9,
+        "target_sec": 30,
+        "within_target": true,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 22,
+            "duration_sec": 5.7
+          },
+          {
+            "shot": 2,
+            "chars": 26,
+            "duration_sec": 6.7
+          },
+          {
+            "shot": 3,
+            "chars": 22,
+            "duration_sec": 5.7
+          },
+          {
+            "shot": 4,
+            "chars": 26,
+            "duration_sec": 6.7
+          },
+          {
+            "shot": 5,
+            "chars": 15,
+            "duration_sec": 4.1
+          }
+        ]
+      },
+      "observation_summary": "total_sec=28.9, target_sec=30, within_target=true"
+    },
+    {
+      "step": 4,
+      "action": "check_rules",
+      "args": {},
+      "rationale": "脚本已写入且时长估算通过，下一步做规则检查（时长与品牌合规）以确认可交付。",
+      "observation": {
+        "ok": true,
+        "tool": "check_rules",
+        "passed": true,
+        "total_sec": 28.9,
+        "violations": []
+      },
+      "observation_summary": "passed=true, violations=0"
+    },
+    {
+      "step": 5,
+      "action": "finish",
+      "args": {
+        "status": "completed",
+        "reason": "脚本已完成：5 个分镜覆盖字幕功能(P01)、12 小时续航(P02)、蓝牙5.3与语音控制(P03)，所有产品事实均标注素材 ID；时长估算 28.9s 在 30s 目标内，规则检查通过，无违规。"
+      },
+      "rationale": "关键字段齐全、素材已检索、脚本事实可溯源且时长与规则检查均通过，任务可正常结束。",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "01_normal",
+    "status": "completed",
+    "reason": "脚本已完成：5 个分镜覆盖字幕功能(P01)、12 小时续航(P02)、蓝牙5.3与语音控制(P03)，所有产品事实均标注素材 ID；时长估算 28.9s 在 30s 目标内，规则检查通过，无违规。",
+    "missing": null,
+    "title": "宿舍党狂喜！这盏智能台灯有点东西",
+    "target_duration_sec": 30,
+    "estimated_total_sec": 28.9,
+    "segments": [
+      {
+        "shot": 1,
+        "visual": "宿舍书桌夜景，台灯亮起，镜头快速推近灯头",
+        "narration": "大学生熬夜赶due，这盏智能台灯真的救了我！",
+        "subtitle": "熬夜赶due救星✨",
+        "material_ids": []
+      },
+      {
+        "shot": 2,
+        "visual": "灯下演示字幕功能，画面出现字幕条",
+        "narration": "它支持字幕功能，网课、追剧、听播客，字幕直接看得清。",
+        "subtitle": "支持字幕功能",
+        "material_ids": [
+          "P01"
+        ]
+      },
+      {
+        "shot": 3,
+        "visual": "台灯持续亮着，画面叠加计时动画",
+        "narration": "续航时间12小时，从晚自习到熄灯都不用充电。",
+        "subtitle": "续航12小时",
+        "material_ids": [
+          "P02"
+        ]
+      },
+      {
+        "shot": 4,
+        "visual": "手机蓝牙连接界面，对着台灯说“开灯”",
+        "narration": "蓝牙5.3连接稳，还能语音控制开关灯，躺床上也能关。",
+        "subtitle": "蓝牙5.3 + 语音控制",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 5,
+        "visual": "台灯全景+宿舍桌面场景，结尾定格",
+        "narration": "宿舍党闭眼入，链接放评论区啦！",
+        "subtitle": "评论区见👇",
+        "material_ids": []
+      }
+    ],
+    "material_ids": [
+      "P01",
+      "P02",
+      "P03"
+    ],
+    "risks": [],
+    "run": {
+      "llm": "live",
+      "steps": 4,
+      "tool_calls": 4,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "finish"
+    }
+  }
+}

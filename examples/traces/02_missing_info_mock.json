@@ -1,0 +1,50 @@
+{
+  "case_id": "02_missing_info",
+  "llm": "mock",
+  "input": {
+    "case_id": "02_missing_info",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "style": "轻松种草"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "request_info",
+      "args": {
+        "missing": [
+          "target_duration_sec"
+        ],
+        "question": "生成脚本前还需要以下关键信息：target_duration_sec。请补充后重试。"
+      },
+      "rationale": "缺少平台/目标时长等关键信息，先请求用户补充，避免凭空假设",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "02_missing_info",
+    "status": "needs_input",
+    "reason": "生成脚本前还需要以下关键信息：target_duration_sec。请补充后重试。",
+    "missing": [
+      "target_duration_sec"
+    ],
+    "title": null,
+    "target_duration_sec": null,
+    "estimated_total_sec": null,
+    "segments": [],
+    "material_ids": [],
+    "risks": [],
+    "run": {
+      "llm": "mock",
+      "steps": 0,
+      "tool_calls": 0,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "request_info"
+    }
+  }
+}

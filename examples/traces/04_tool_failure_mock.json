@@ -1,0 +1,417 @@
+{
+  "case_id": "04_tool_failure",
+  "llm": "mock",
+  "input": {
+    "case_id": "04_tool_failure",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "target_duration_sec": 30,
+    "style": "轻松种草",
+    "notes": "注入 estimate_duration 首次调用失败，观察模型是否重试并恢复",
+    "inject_failures": {
+      "estimate_duration": 1
+    }
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "智能台灯"
+      },
+      "rationale": "先检索与主题相关的产品素材，作为事实依据",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "智能台灯",
+        "count": 3,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "智能台灯 Pro · 字幕支持",
+            "facts": [
+              "支持字幕功能"
+            ],
+            "tags": [
+              "台灯",
+              "字幕",
+              "短视频",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P02",
+            "title": "智能台灯 Pro · 续航",
+            "facts": [
+              "续航时间 12 小时"
+            ],
+            "tags": [
+              "台灯",
+              "续航",
+              "电池",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P03",
+            "title": "智能台灯 Pro · 连接与语音",
+            "facts": [
+              "支持蓝牙 5.3",
+              "支持语音控制开关灯"
+            ],
+            "tags": [
+              "台灯",
+              "蓝牙",
+              "语音控制",
+              "智能台灯"
+            ]
+          }
+        ]
+      },
+      "observation_summary": "count=3 :: P01:支持字幕功能 | P02:续航时间 12 小时 | P03:支持蓝牙 5.3；支持语音控制开关灯"
+    },
+    {
+      "step": 2,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯｜抖音30秒短视频脚本",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "主播出镜，手持智能台灯",
+            "narration": "大家好，今天给大家种草一款超实用的智能台灯，大学生一定要看。",
+            "material_ids": []
+          },
+          {
+            "shot": 2,
+            "visual": "展示智能台灯 Pro · 字幕支持",
+            "narration": "它支持字幕功能，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "展示智能台灯 Pro · 续航",
+            "narration": "它续航时间 12 小时，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持蓝牙 5.3，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持语音控制开关灯，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 6,
+            "visual": "优惠信息 / 引导关注",
+            "narration": "喜欢的话就点击下方链接，把它带回家吧。",
+            "material_ids": []
+          }
+        ],
+        "notes": "整体风格：轻松种草"
+      },
+      "rationale": "检索到 3 条素材，据此撰写初稿",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 6,
+        "narration_chars": 155,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=6, narration_chars=155, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 3,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "初稿完成，先估算时长是否满足限制",
+      "observation": {
+        "ok": false,
+        "error": "工具 estimate_duration 临时故障（注入失败，剩余 0 次）",
+        "error_type": "tool_error"
+      },
+      "observation_summary": "ERROR tool_error: 工具 estimate_duration 临时故障（注入失败，剩余 0 次）"
+    },
+    {
+      "step": 4,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "工具 estimate_duration 报错，原样重试一次以确认是否为瞬时故障",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 39.9,
+        "target_sec": 30,
+        "within_target": false,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 30,
+            "duration_sec": 7.6
+          },
+          {
+            "shot": 2,
+            "chars": 25,
+            "duration_sec": 6.5
+          },
+          {
+            "shot": 3,
+            "chars": 27,
+            "duration_sec": 6.9
+          },
+          {
+            "shot": 4,
+            "chars": 26,
+            "duration_sec": 6.7
+          },
+          {
+            "shot": 5,
+            "chars": 28,
+            "duration_sec": 7.2
+          },
+          {
+            "shot": 6,
+            "chars": 19,
+            "duration_sec": 5
+          }
+        ]
+      },
+      "observation_summary": "total_sec=39.9, target_sec=30, within_target=false"
+    },
+    {
+      "step": 5,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯｜抖音30秒短视频脚本",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "主播出镜，手持智能台灯",
+            "narration": "大学生必备的智能台灯来啦。",
+            "material_ids": []
+          },
+          {
+            "shot": 2,
+            "visual": "展示智能台灯 Pro · 字幕支持",
+            "narration": "它支持字幕功能，用起来很省心。",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "展示智能台灯 Pro · 续航",
+            "narration": "它续航时间 12 小时，用起来很省心。",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持蓝牙 5.3，用起来很省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持语音控制开关灯，用起来很省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 6,
+            "visual": "优惠信息 / 引导关注",
+            "narration": "喜欢就点击下方链接带回家吧。",
+            "material_ids": []
+          }
+        ],
+        "notes": "整体风格：轻松种草"
+      },
+      "rationale": "时长 39.9s 超过目标 30s，压缩脚本后重新估算",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 6,
+        "narration_chars": 93,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=6, narration_chars=93, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 6,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "初稿完成，先估算时长是否满足限制",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 25.1,
+        "target_sec": 30,
+        "within_target": true,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 13,
+            "duration_sec": 3.6
+          },
+          {
+            "shot": 2,
+            "chars": 15,
+            "duration_sec": 4.1
+          },
+          {
+            "shot": 3,
+            "chars": 17,
+            "duration_sec": 4.5
+          },
+          {
+            "shot": 4,
+            "chars": 16,
+            "duration_sec": 4.3
+          },
+          {
+            "shot": 5,
+            "chars": 18,
+            "duration_sec": 4.8
+          },
+          {
+            "shot": 6,
+            "chars": 14,
+            "duration_sec": 3.8
+          }
+        ]
+      },
+      "observation_summary": "total_sec=25.1, target_sec=30, within_target=true"
+    },
+    {
+      "step": 7,
+      "action": "check_rules",
+      "args": {},
+      "rationale": "时长 25.1s 未超目标，继续做规则检查",
+      "observation": {
+        "ok": true,
+        "tool": "check_rules",
+        "passed": true,
+        "total_sec": 25.1,
+        "violations": []
+      },
+      "observation_summary": "passed=true, violations=0"
+    },
+    {
+      "step": 8,
+      "action": "finish",
+      "args": {
+        "status": "completed",
+        "reason": "时长与品牌规则检查均通过"
+      },
+      "rationale": "所有检查通过，输出最终脚本",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "04_tool_failure",
+    "status": "completed",
+    "reason": "时长与品牌规则检查均通过",
+    "missing": null,
+    "title": "智能台灯｜抖音30秒短视频脚本",
+    "target_duration_sec": 30,
+    "estimated_total_sec": 25.1,
+    "segments": [
+      {
+        "shot": 1,
+        "visual": "主播出镜，手持智能台灯",
+        "narration": "大学生必备的智能台灯来啦。",
+        "subtitle": "大学生必备的智能台灯来啦。",
+        "material_ids": []
+      },
+      {
+        "shot": 2,
+        "visual": "展示智能台灯 Pro · 字幕支持",
+        "narration": "它支持字幕功能，用起来很省心。",
+        "subtitle": "它支持字幕功能，用起来很省心。",
+        "material_ids": [
+          "P01"
+        ]
+      },
+      {
+        "shot": 3,
+        "visual": "展示智能台灯 Pro · 续航",
+        "narration": "它续航时间 12 小时，用起来很省心。",
+        "subtitle": "它续航时间 12 小时，用起来很省心。",
+        "material_ids": [
+          "P02"
+        ]
+      },
+      {
+        "shot": 4,
+        "visual": "展示智能台灯 Pro · 连接与语音",
+        "narration": "它支持蓝牙 5.3，用起来很省心。",
+        "subtitle": "它支持蓝牙 5.3，用起来很省心。",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 5,
+        "visual": "展示智能台灯 Pro · 连接与语音",
+        "narration": "它支持语音控制开关灯，用起来很省心。",
+        "subtitle": "它支持语音控制开关灯，用起来很省心。",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 6,
+        "visual": "优惠信息 / 引导关注",
+        "narration": "喜欢就点击下方链接带回家吧。",
+        "subtitle": "喜欢就点击下方链接带回家吧。",
+        "material_ids": []
+      }
+    ],
+    "material_ids": [
+      "P01",
+      "P02",
+      "P03"
+    ],
+    "risks": [],
+    "run": {
+      "llm": "mock",
+      "steps": 6,
+      "tool_calls": 7,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "finish"
+    }
+  }
+}

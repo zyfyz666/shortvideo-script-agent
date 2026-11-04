@@ -1,0 +1,484 @@
+{
+  "case_id": "05_over_length_fail",
+  "llm": "mock",
+  "input": {
+    "case_id": "05_over_length_fail",
+    "topic": "智能台灯",
+    "audience": "大学生",
+    "platform": "抖音",
+    "target_duration_sec": 5,
+    "style": "硬核安利",
+    "notes": "用户把目标时长压到 5 秒，用于验证多次压缩仍超时长时的明确失败"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "智能台灯"
+      },
+      "rationale": "先检索与主题相关的产品素材，作为事实依据",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "智能台灯",
+        "count": 3,
+        "materials": [
+          {
+            "id": "P01",
+            "title": "智能台灯 Pro · 字幕支持",
+            "facts": [
+              "支持字幕功能"
+            ],
+            "tags": [
+              "台灯",
+              "字幕",
+              "短视频",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P02",
+            "title": "智能台灯 Pro · 续航",
+            "facts": [
+              "续航时间 12 小时"
+            ],
+            "tags": [
+              "台灯",
+              "续航",
+              "电池",
+              "智能台灯"
+            ]
+          },
+          {
+            "id": "P03",
+            "title": "智能台灯 Pro · 连接与语音",
+            "facts": [
+              "支持蓝牙 5.3",
+              "支持语音控制开关灯"
+            ],
+            "tags": [
+              "台灯",
+              "蓝牙",
+              "语音控制",
+              "智能台灯"
+            ]
+          }
+        ]
+      },
+      "observation_summary": "count=3 :: P01:支持字幕功能 | P02:续航时间 12 小时 | P03:支持蓝牙 5.3；支持语音控制开关灯"
+    },
+    {
+      "step": 2,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯｜抖音5秒短视频脚本",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "主播出镜，手持智能台灯",
+            "narration": "大家好，今天给大家种草一款超实用的智能台灯，大学生一定要看。",
+            "material_ids": []
+          },
+          {
+            "shot": 2,
+            "visual": "展示智能台灯 Pro · 字幕支持",
+            "narration": "它支持字幕功能，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "展示智能台灯 Pro · 续航",
+            "narration": "它续航时间 12 小时，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持蓝牙 5.3，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持语音控制开关灯，这一点真的很加分，用起来特别省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 6,
+            "visual": "优惠信息 / 引导关注",
+            "narration": "喜欢的话就点击下方链接，把它带回家吧。",
+            "material_ids": []
+          }
+        ],
+        "notes": "整体风格：硬核安利"
+      },
+      "rationale": "检索到 3 条素材，据此撰写初稿",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 6,
+        "narration_chars": 155,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=6, narration_chars=155, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 3,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "初稿完成，先估算时长是否满足限制",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 39.9,
+        "target_sec": 5,
+        "within_target": false,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 30,
+            "duration_sec": 7.6
+          },
+          {
+            "shot": 2,
+            "chars": 25,
+            "duration_sec": 6.5
+          },
+          {
+            "shot": 3,
+            "chars": 27,
+            "duration_sec": 6.9
+          },
+          {
+            "shot": 4,
+            "chars": 26,
+            "duration_sec": 6.7
+          },
+          {
+            "shot": 5,
+            "chars": 28,
+            "duration_sec": 7.2
+          },
+          {
+            "shot": 6,
+            "chars": 19,
+            "duration_sec": 5
+          }
+        ]
+      },
+      "observation_summary": "total_sec=39.9, target_sec=5, within_target=false"
+    },
+    {
+      "step": 4,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯｜抖音5秒短视频脚本",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "主播出镜，手持智能台灯",
+            "narration": "大学生必备的智能台灯来啦。",
+            "material_ids": []
+          },
+          {
+            "shot": 2,
+            "visual": "展示智能台灯 Pro · 字幕支持",
+            "narration": "它支持字幕功能，用起来很省心。",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "展示智能台灯 Pro · 续航",
+            "narration": "它续航时间 12 小时，用起来很省心。",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持蓝牙 5.3，用起来很省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "它支持语音控制开关灯，用起来很省心。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 6,
+            "visual": "优惠信息 / 引导关注",
+            "narration": "喜欢就点击下方链接带回家吧。",
+            "material_ids": []
+          }
+        ],
+        "notes": "整体风格：硬核安利"
+      },
+      "rationale": "时长 39.9s 超过目标 5s，压缩脚本后重新估算",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 6,
+        "narration_chars": 93,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=6, narration_chars=93, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 5,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "初稿完成，先估算时长是否满足限制",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 25.1,
+        "target_sec": 5,
+        "within_target": false,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 13,
+            "duration_sec": 3.6
+          },
+          {
+            "shot": 2,
+            "chars": 15,
+            "duration_sec": 4.1
+          },
+          {
+            "shot": 3,
+            "chars": 17,
+            "duration_sec": 4.5
+          },
+          {
+            "shot": 4,
+            "chars": 16,
+            "duration_sec": 4.3
+          },
+          {
+            "shot": 5,
+            "chars": 18,
+            "duration_sec": 4.8
+          },
+          {
+            "shot": 6,
+            "chars": 14,
+            "duration_sec": 3.8
+          }
+        ]
+      },
+      "observation_summary": "total_sec=25.1, target_sec=5, within_target=false"
+    },
+    {
+      "step": 6,
+      "action": "write_script",
+      "args": {
+        "title": "智能台灯｜抖音5秒短视频脚本",
+        "segments": [
+          {
+            "shot": 1,
+            "visual": "展示智能台灯 Pro · 字幕支持",
+            "narration": "支持字幕功能。",
+            "material_ids": [
+              "P01"
+            ]
+          },
+          {
+            "shot": 2,
+            "visual": "展示智能台灯 Pro · 续航",
+            "narration": "续航时间 12 小时。",
+            "material_ids": [
+              "P02"
+            ]
+          },
+          {
+            "shot": 3,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "支持蓝牙 5.3。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 4,
+            "visual": "展示智能台灯 Pro · 连接与语音",
+            "narration": "支持语音控制开关灯。",
+            "material_ids": [
+              "P03"
+            ]
+          },
+          {
+            "shot": 5,
+            "visual": "优惠信息 / 引导关注",
+            "narration": "点击下方链接。",
+            "material_ids": []
+          }
+        ],
+        "notes": "整体风格：硬核安利"
+      },
+      "rationale": "时长 25.1s 超过目标 5s，压缩脚本后重新估算",
+      "observation": {
+        "ok": true,
+        "tool": "write_script",
+        "segment_count": 5,
+        "narration_chars": 41,
+        "material_ids": [
+          "P01",
+          "P02",
+          "P03"
+        ]
+      },
+      "observation_summary": "segments=5, narration_chars=41, material_ids=[P01,P02,P03]"
+    },
+    {
+      "step": 7,
+      "action": "estimate_duration",
+      "args": {},
+      "rationale": "初稿完成，先估算时长是否满足限制",
+      "observation": {
+        "ok": true,
+        "tool": "estimate_duration",
+        "total_sec": 12.3,
+        "target_sec": 5,
+        "within_target": false,
+        "chars_per_second": 4.2,
+        "segments": [
+          {
+            "shot": 1,
+            "chars": 7,
+            "duration_sec": 2.2
+          },
+          {
+            "shot": 2,
+            "chars": 9,
+            "duration_sec": 2.6
+          },
+          {
+            "shot": 3,
+            "chars": 8,
+            "duration_sec": 2.4
+          },
+          {
+            "shot": 4,
+            "chars": 10,
+            "duration_sec": 2.9
+          },
+          {
+            "shot": 5,
+            "chars": 7,
+            "duration_sec": 2.2
+          }
+        ]
+      },
+      "observation_summary": "total_sec=12.3, target_sec=5, within_target=false"
+    },
+    {
+      "step": 8,
+      "action": "finish",
+      "args": {
+        "status": "failed",
+        "reason": "已修正 2 次，预计时长仍超过目标，当前素材无法在目标时长内完成"
+      },
+      "rationale": "多次压缩后仍超时长，无法满足硬性时长要求，明确失败",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "05_over_length_fail",
+    "status": "failed",
+    "reason": "已修正 2 次，预计时长仍超过目标，当前素材无法在目标时长内完成",
+    "missing": null,
+    "title": "智能台灯｜抖音5秒短视频脚本",
+    "target_duration_sec": 5,
+    "estimated_total_sec": 12.3,
+    "segments": [
+      {
+        "shot": 1,
+        "visual": "展示智能台灯 Pro · 字幕支持",
+        "narration": "支持字幕功能。",
+        "subtitle": "支持字幕功能。",
+        "material_ids": [
+          "P01"
+        ]
+      },
+      {
+        "shot": 2,
+        "visual": "展示智能台灯 Pro · 续航",
+        "narration": "续航时间 12 小时。",
+        "subtitle": "续航时间 12 小时。",
+        "material_ids": [
+          "P02"
+        ]
+      },
+      {
+        "shot": 3,
+        "visual": "展示智能台灯 Pro · 连接与语音",
+        "narration": "支持蓝牙 5.3。",
+        "subtitle": "支持蓝牙 5.3。",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 4,
+        "visual": "展示智能台灯 Pro · 连接与语音",
+        "narration": "支持语音控制开关灯。",
+        "subtitle": "支持语音控制开关灯。",
+        "material_ids": [
+          "P03"
+        ]
+      },
+      {
+        "shot": 5,
+        "visual": "优惠信息 / 引导关注",
+        "narration": "点击下方链接。",
+        "subtitle": "点击下方链接。",
+        "material_ids": []
+      }
+    ],
+    "material_ids": [
+      "P01",
+      "P02",
+      "P03"
+    ],
+    "risks": [],
+    "run": {
+      "llm": "mock",
+      "steps": 7,
+      "tool_calls": 7,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "finish"
+    }
+  }
+}

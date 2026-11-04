@@ -1,0 +1,83 @@
+{
+  "case_id": "03_no_material",
+  "llm": "live",
+  "input": {
+    "case_id": "03_no_material",
+    "topic": "量子计算在线课程",
+    "audience": "职场人",
+    "platform": "B站",
+    "target_duration_sec": 30,
+    "style": "科普"
+  },
+  "max_steps": 16,
+  "max_tool_calls": 16,
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "query": "量子计算在线课程"
+      },
+      "rationale": "关键字段齐全，先检索产品素材，确保脚本事实有据可依。",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "量子计算在线课程",
+        "count": 0,
+        "materials": []
+      },
+      "observation_summary": "count=0"
+    },
+    {
+      "step": 2,
+      "action": "search_materials",
+      "args": {
+        "query": "量子计算 课程 入门 科普 产品介绍"
+      },
+      "rationale": "首次检索无结果，按规则改写查询关键词重试一次。",
+      "observation": {
+        "ok": true,
+        "tool": "search_materials",
+        "query": "量子计算 课程 入门 科普 产品介绍",
+        "count": 0,
+        "materials": []
+      },
+      "observation_summary": "count=0"
+    },
+    {
+      "step": 3,
+      "action": "request_info",
+      "args": {
+        "missing": [
+          "产品素材（量子计算在线课程的事实信息，如课程大纲、讲师背景、课时、价格、学习收获等）"
+        ],
+        "question": "已用「量子计算在线课程」「量子计算 课程 入门 科普 产品介绍」两次检索素材库，均无结果（count=0），无法在不编造事实的前提下撰写脚本。请补充该课程的官方素材（例如课程大纲、讲师/机构背景、总课时与形式、适合人群、价格或报名信息、可验证的学习收获等），或提供素材库中对应的产品名称/关键词，我再继续生成 30 秒 B站科普脚本。"
+      },
+      "rationale": "两次改写查询后素材库仍无结果，按规则需请求用户补充素材，避免编造产品事实。",
+      "observation": null,
+      "observation_summary": "(终止动作，不调用工具)"
+    }
+  ],
+  "result": {
+    "case_id": "03_no_material",
+    "status": "needs_input",
+    "reason": "已用「量子计算在线课程」「量子计算 课程 入门 科普 产品介绍」两次检索素材库，均无结果（count=0），无法在不编造事实的前提下撰写脚本。请补充该课程的官方素材（例如课程大纲、讲师/机构背景、总课时与形式、适合人群、价格或报名信息、可验证的学习收获等），或提供素材库中对应的产品名称/关键词，我再继续生成 30 秒 B站科普脚本。",
+    "missing": [
+      "产品素材（量子计算在线课程的事实信息，如课程大纲、讲师背景、课时、价格、学习收获等）"
+    ],
+    "title": null,
+    "target_duration_sec": 30,
+    "estimated_total_sec": null,
+    "segments": [],
+    "material_ids": [],
+    "risks": [],
+    "run": {
+      "llm": "live",
+      "steps": 2,
+      "tool_calls": 2,
+      "max_steps": 16,
+      "max_tool_calls": 16,
+      "finished_action": "request_info"
+    }
+  }
+}
