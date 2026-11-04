@@ -34,8 +34,8 @@
 ## 提交记录与用时
 
 - 总用时：约 ___ 小时（含需求分析、设计、实现、测试、文档）
-- 提交仓库：<填写你的 GitHub 仓库 URL>
-- 关键 commit：<填写 commit SHA>
+- 提交仓库：https://github.com/zyfyz666/shortvideo-script-agent
+- 关键 commit：ca94bee68d8a45e18767f2d6d14f2a991de6bd5e（主交付：ReAct 循环 + 4 工具 + 测试 + 文档 + trace）
 
 ## 真实模型调用说明
 
